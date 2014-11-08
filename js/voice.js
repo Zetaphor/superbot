@@ -1,72 +1,74 @@
 $(document).ready(function() {
-	var finalTranscript = '';
-	var recognizing = false;
+	var speechQueue = {};
+	var currentlySpeaking = false;
 
-	var recognition = new webkitSpeechRecognition();
-	recognition.continuous = true;         // keep processing input until stopped
-	recognition.interimResults = true;     // show interim results
-	recognition.lang = 'en-US';           // specify the language
-
-	recognition.onstart = function() {
-		recognizing = true;
-		console.log("Recognition started");
-        $('#micAnimated').show();
+	var introMsgIndex = 0;
+	var introMessages = {
+		0: "Hello, how can I be of assistance?",
+		1: "Hello again, how can I be of assistance?",
+		2: "Hi there, how can I be of assistance?",
+		3: "How can I be of assistance?",
+		4: "Hello, what can I do for you?",
+		5: "Hello again, what can I do for you?",
+		6: "Hi there, what can I do for you?",
+		7: "What can I do for you?",
+		8: "Hello, how can I help you?",
+		9: "Hello again, how can I help you?",
+		10: "Hi there, how can I help you?",
+		11: "How can I help you?",
 	};
 
-	recognition.onerror = function(event) {
-		console.log('Recognition error');
-		$.sayMessage("Sorry, I didn't understand that");
+	var procMsgIndex = 0;
+	var procMessages = {
+		0: "Give me a moment to look that up for you",
+		1: "Give me a moment to find that for you",
+		2: "Sure thing, give me a moment to find that for you",
+		3: "No problem, please wait while I check that for you",
+		4: "Got it, give me a moment to look that up",
+		5: "I'll have that information for you in just a moment",
+		6: "Give me a moment to look that up",
+		7: "That will take just a moment to look up",
+		8: "Got it, give me a moment to find that"
 	};
 
-	recognition.onend = function() {
-		recognizing = false;
-        $('#micAnimated').hide();
-		console.log("Recognition ended");
-		if (finalTranscript.length) {
-			$.sayProcessing();
-			$.apiRequest(finalTranscript);
-		} else {
-			$.sayMessage("Sorry, I didn't catch that. Could you please try again?");
+	$.sayMessage = function(message) {
+		if (!currentlySpeaking) {
+			console.log("Saying: " + message);
+			var msg = new SpeechSynthesisUtterance(message);
+			window.speechSynthesis.speak(msg);
 		}
+
+		msg.onstart = function (event) {
+			console.log('Start speech');
+		};
+
+		msg.onend = function(event) {
+			console.log('Speech finished');
+			console.log(event);
+
+		};
 	};
 
-    recognition.onresult = function(event) {
-        var interimTranscript = '';
+	$.sayProcessing = function() {
+		$.sayMessage(procMessages[procMsgIndex]);
+		procMsgIndex++;
+		if (procMsgIndex === Object.keys(procMessages).length) procMsgIndex = 0;
+	};
 
-        // Assemble the transcript from the array of results
-        for (var i = event.resultIndex; i < event.results.length; ++i) {
-            if (event.results[i].isFinal) {
-                finalTranscript += event.results[i][0].transcript;
-            } else {
-                interimTranscript += event.results[i][0].transcript;
-            }
-        }
 
-        $('#transcript').html(interimTranscript);
+	$.greetUser = function() {
+		$.sayMessage(introMessages[introMsgIndex]);
+	};
 
-        console.log("interim:  " + interimTranscript);
-        console.log("final:    " + finalTranscript);
+	function randomNumber(max) {
+		return Math.floor(Math.random() * (Math.floor(max/2) + Math.floor(max/2)) );
+	}
 
-        // Update the page
-        if(finalTranscript.length > 0) {
-            $('#transcript').html(finalTranscript);
-            recognition.stop();
-            recognizing = false;
-        }
-    };
+	// Choose a random intro and initial processing message
+	introMsgIndex = randomNumber(Object.keys(introMessages).length);
+	procMsgIndex = randomNumber(Object.keys(procMessages).length);
+	console.log('Intro Index: '+introMsgIndex);
+	console.log('Proccessing Index: '+procMsgIndex);
 
-    $(".micImg").click(function(e) {
-        e.preventDefault();
-
-        if (recognizing) {
-            recognition.stop();
-            recognizing = false;
-        } else {
-            finalTranscript = '';
-            // Request access to the User's microphone and Start recognizing voice input
-            recognition.start();
-            $('#transcript').html('');
-        }
-    });
-
+	$.greetUser();
 });
