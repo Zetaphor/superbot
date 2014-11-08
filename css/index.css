@@ -1,0 +1,21 @@
+#micImages {
+	position: relative;
+	width: 376px;
+	height: 375px;
+	margin: 0 auto;
+}
+
+.micImg {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#micAnimated {
+	display: none;
+}
+
+#transcript {
+	border: 1px black solid;
+	height: 30px;
+}
