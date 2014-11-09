@@ -27,8 +27,8 @@ $(document).ready(function() {
 		if (finalTranscript.length) {
 			// $.sayProcessing();
 			$.apiRequest(finalTranscript);
-            $('.micImg').hide();
             $('#loadingImg').show();
+            $('.micImg').fadeOut();
 		} else {
             $('#errorDing')[0].play();
 			$.sayMessage("Sorry, I didn't catch that. Could you please try again?");
