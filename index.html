@@ -8,16 +8,19 @@
         <script src="js/wit_api.js"></script>
     </head>
     <body>
-        <audio id="errorDing" preload="auto">
-          <source src="audio/ding_1.mp3" />
+<!--         <audio id="errorDing" preload="auto">
+          <source src="audio/ding_1.mp3" type="audio/mpeg" />
           Your browser does not support HTML5 Web Audio Playback!
         </audio>
         <audio id="speechDing" preload="auto">
           <source src="audio/ding_2.mp3" />
-        </audio>
-        <div id="micImages">
-            <img class="micImg" id="micStandard" src="img/mic_standard.png">
-            <img class="micImg" id="micAnimated" src="img/mic_animated.gif">
+        </audio> -->
+        <video class="audioTrack" src="audio/ding_2.mp3" id="speechDing"></video>
+        <video class="audioTrack" src="audio/ding_1.mp3" id="errorDing"></video>
+        <div id="interfaceWrapper">
+            <img class="interfaceImg" id="loadingImg" src="img/loading.gif">
+            <img class="interfaceImg micImg" id="micStandard" src="img/mic_standard.png">
+            <img class="interfaceImg micImg" id="micAnimated" src="img/mic_animated.gif">
         </div>
         <div id="transcript">&nbsp;</div>
     </body>

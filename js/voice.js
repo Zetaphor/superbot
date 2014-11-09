@@ -47,6 +47,9 @@ $(document).ready(function() {
 				msg.onend = function(event) {
 					speechQueue.splice(0, 1);
 					currentlySpeaking = false;
+					$('#loadingImg').fadeOut(function() {
+						$('#micStandard').fadeIn();
+					});
 					// console.log("Speech ended");
 				};
 			}

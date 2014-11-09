@@ -25,8 +25,10 @@ $(document).ready(function() {
 		console.log("Recognition ended");
         $('#speechDing')[0].play();
 		if (finalTranscript.length) {
-			$.sayProcessing();
+			// $.sayProcessing();
 			$.apiRequest(finalTranscript);
+            $('.micImg').hide();
+            $('#loadingImg').show();
 		} else {
             $('#errorDing')[0].play();
 			$.sayMessage("Sorry, I didn't catch that. Could you please try again?");
