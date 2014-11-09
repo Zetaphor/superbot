@@ -1,5 +1,6 @@
 $(document).ready(function() {
-	var speechQueue = {};
+	// The queue of messages waiting to be sent to the tts synthesis
+	var speechQueue = [];
 	var currentlySpeaking = false;
 
 	var introMsgIndex = 0;
@@ -31,24 +32,33 @@ $(document).ready(function() {
 		8: "Got it, give me a moment to find that"
 	};
 
-	$.sayMessage = function(message) {
-		if (!currentlySpeaking) {
-			console.log("Saying: " + message);
-			var msg = new SpeechSynthesisUtterance(message);
-			window.speechSynthesis.speak(msg);
+	// Runs on an interval, speaking the next message in the queue
+	$.processSpeechQueue = function() {
+		if (speechQueue.length) {
+			if (!currentlySpeaking) {
+				var msg = new SpeechSynthesisUtterance(speechQueue[0]);
+				window.speechSynthesis.speak(msg);
+				currentlySpeaking = true;
+
+				// msg.onstart = function (event) {
+					// console.log('Start speech');
+				// };
+
+				msg.onend = function(event) {
+					speechQueue.splice(0, 1);
+					currentlySpeaking = false;
+					// console.log("Speech ended");
+				};
+			}
 		}
-
-		msg.onstart = function (event) {
-			console.log('Start speech');
-		};
-
-		msg.onend = function(event) {
-			console.log('Speech finished');
-			console.log(event);
-
-		};
 	};
 
+	// Push a new message onto the speech queue
+	$.sayMessage = function(message) {
+		speechQueue.push(message);
+	};
+
+	// Choose a random processing message
 	$.sayProcessing = function() {
 		$.sayMessage(procMessages[procMsgIndex]);
 		procMsgIndex++;
@@ -57,7 +67,12 @@ $(document).ready(function() {
 
 
 	$.greetUser = function() {
-		$.sayMessage(introMessages[introMsgIndex]);
+		// Push the greeting onto the queue and call it manually
+		speechQueue.push(introMessages[introMsgIndex]);
+		$.processSpeechQueue();
+
+		// Start the speech queue processing
+		setInterval("$.processSpeechQueue()", 1000);
 	};
 
 	function randomNumber(max) {
