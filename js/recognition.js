@@ -15,6 +15,7 @@ $(document).ready(function() {
 
 	recognition.onerror = function(event) {
 		console.log('Recognition error');
+        $('#errorDing')[0].play();
 		$.sayMessage("Sorry, I encountered an error while listening");
 	};
 
@@ -22,10 +23,12 @@ $(document).ready(function() {
 		recognizing = false;
         $('#micAnimated').hide();
 		console.log("Recognition ended");
+        $('#speechDing')[0].play();
 		if (finalTranscript.length) {
 			$.sayProcessing();
 			$.apiRequest(finalTranscript);
 		} else {
+            $('#errorDing')[0].play();
 			$.sayMessage("Sorry, I didn't catch that. Could you please try again?");
 		}
 	};

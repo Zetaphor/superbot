@@ -7,6 +7,13 @@
         <script src="js/wit_api.js"></script>
     </head>
     <body>
+        <audio id="errorDing" preload="auto">
+          <source src="audio/ding_1.mp3" />
+          Your browser does not support HTML5 Web Audio Playback!
+        </audio>
+        <audio id="speechDing" preload="auto">
+          <source src="audio/ding_2.mp3" />
+        </audio>
         <div id="micImages">
             <img class="micImg" id="micStandard" src="img/mic_standard.png">
             <img class="micImg" id="micAnimated" src="img/mic_animated.gif">
