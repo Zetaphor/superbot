@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors',1);
-error_reporting(E_ALL);
-require 'kint/Kint.class.php';
-
 $moods = array(
 		"I'm doing well, thanks for asking!",
 		"I'm great!",

@@ -1,6 +1,4 @@
 <?php
-require 'kint/Kint.class.php';
-
 $greetings = array(
 		'Hello again!',
 		'Nice to see you again!',
