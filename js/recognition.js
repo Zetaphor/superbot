@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 	recognition.onerror = function(event) {
 		console.log('Recognition error');
-		$.sayMessage("Sorry, I didn't understand that");
+		$.sayMessage("Sorry, I encountered an error while listening");
 	};
 
 	recognition.onend = function() {
