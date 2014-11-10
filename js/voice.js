@@ -34,23 +34,25 @@ $(document).ready(function() {
 
 	// Runs on an interval, speaking the next message in the queue
 	$.processSpeechQueue = function() {
+		$.debug("Speech Queue: "+speechQueue);
 		if (speechQueue.length) {
 			if (!currentlySpeaking) {
 				var msg = new SpeechSynthesisUtterance(speechQueue[0]);
 				window.speechSynthesis.speak(msg);
 				currentlySpeaking = true;
+				$.debug("Issued speech command");
 
 				msg.onstart = function (event) {
-					console.log('Start speech');
+					speechQueue.splice(0, 1);
+					$.debug('Start speech');
 				};
 
 				msg.onend = function(event) {
-					speechQueue.splice(0, 1);
 					currentlySpeaking = false;
 					$('#loadingImg').fadeOut(function() {
 						$('#micStandard').fadeIn();
 					});
-					console.log("Speech ended");
+					$.debug("Speech ended");
 				};
 			}
 		}
@@ -58,6 +60,7 @@ $(document).ready(function() {
 
 	// Push a new message onto the speech queue
 	$.sayMessage = function(message) {
+		$.debug("Queued message: "+message);
 		speechQueue.push(message);
 	};
 
@@ -85,8 +88,8 @@ $(document).ready(function() {
 	// Choose a random intro and initial processing message
 	introMsgIndex = randomNumber(Object.keys(introMessages).length);
 	procMsgIndex = randomNumber(Object.keys(procMessages).length);
-	console.log('Intro Index: '+introMsgIndex);
-	console.log('Proccessing Index: '+procMsgIndex);
+	$.debug('Intro Index: '+introMsgIndex);
+	$.debug('Proccessing Index: '+procMsgIndex);
 
 	$.greetUser();
 	// $('#speechDing')[0].play();

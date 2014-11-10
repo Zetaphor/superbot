@@ -28,3 +28,9 @@
 .audioTrack {
 	display: none;
 }
+
+#messageText {
+	width: 500px;
+	height: 30px;
+	margin-bottom: 10px;
+}

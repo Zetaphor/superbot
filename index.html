@@ -3,6 +3,7 @@
         <title>SuperBot</title>
         <link rel="stylesheet" href="css/index.css">
         <script src="lib/jquery-1.11.1.min.js"></script>
+        <script src="js/index.js"></script>
         <script src="js/voice.js"></script>
         <script src="js/recognition.js"></script>
         <script src="js/wit_api.js"></script>
@@ -21,6 +22,10 @@
             <img class="interfaceImg" id="loadingImg" src="img/loading.gif">
             <img class="interfaceImg micImg" id="micStandard" src="img/mic_standard.png">
             <img class="interfaceImg micImg" id="micAnimated" src="img/mic_animated.gif">
+        </div>
+        <div id="manualInput">
+            <input id="messageText" type="text">
+            <input type="button" id="submitMessage" value="Send">
         </div>
         <div id="transcript">&nbsp;</div>
     </body>

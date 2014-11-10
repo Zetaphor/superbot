@@ -9,12 +9,12 @@ $(document).ready(function() {
 
 	recognition.onstart = function() {
 		recognizing = true;
-		console.log("Recognition started");
+		$.debug("Recognition started");
         $('#micAnimated').show();
 	};
 
 	recognition.onerror = function(event) {
-		console.log('Recognition error');
+		$.debug('Recognition error');
         $('#errorDing')[0].play();
 		$.sayMessage("Sorry, I encountered an error while listening");
 	};
@@ -22,7 +22,7 @@ $(document).ready(function() {
 	recognition.onend = function() {
 		recognizing = false;
         $('#micAnimated').hide();
-		console.log("Recognition ended");
+		$.debug("Recognition ended");
         $('#speechDing')[0].play();
 		if (finalTranscript.length) {
 			// $.sayProcessing();
@@ -49,8 +49,8 @@ $(document).ready(function() {
 
         $('#transcript').html(interimTranscript);
 
-        console.log("interim:  " + interimTranscript);
-        console.log("final:    " + finalTranscript);
+        $.debug("interim:  " + interimTranscript);
+        $.debug("final:    " + finalTranscript);
 
         // Update the page
         if(finalTranscript.length > 0) {
