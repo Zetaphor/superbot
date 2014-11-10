@@ -13,7 +13,7 @@ $(document).ready(function() {
 				var command = response.outcomes[0].intent;
 				var entities = response.outcomes[0].entities;
 
-				// console.log(command);
+				console.log("Command: "+command);
 				// console.log(entities);
 				// console.log(JSON.stringify(entities));
 				$.post( "modules/" + command + ".php", { data: JSON.stringify(entities) })

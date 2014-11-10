@@ -40,9 +40,9 @@ $(document).ready(function() {
 				window.speechSynthesis.speak(msg);
 				currentlySpeaking = true;
 
-				// msg.onstart = function (event) {
-					// console.log('Start speech');
-				// };
+				msg.onstart = function (event) {
+					console.log('Start speech');
+				};
 
 				msg.onend = function(event) {
 					speechQueue.splice(0, 1);
@@ -50,7 +50,7 @@ $(document).ready(function() {
 					$('#loadingImg').fadeOut(function() {
 						$('#micStandard').fadeIn();
 					});
-					// console.log("Speech ended");
+					console.log("Speech ended");
 				};
 			}
 		}
@@ -89,4 +89,6 @@ $(document).ready(function() {
 	console.log('Proccessing Index: '+procMsgIndex);
 
 	$.greetUser();
+	// $('#speechDing')[0].play();
+	$('#speechDing').trigger("play");
 });
