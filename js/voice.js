@@ -1,3 +1,5 @@
+// https://gist.github.com/woollsta/2d146f13878a301b36d7#file-chunkify-js
+// https://stackoverflow.com/questions/21947730/chrome-speech-synthesis-with-longer-texts/23808155#23808155
 $(document).ready(function() {
 	// The queue of messages waiting to be sent to the tts synthesis
 	var speechQueue = [];
@@ -38,7 +40,10 @@ $(document).ready(function() {
 		if (speechQueue.length > 0) {
 			if (currentlySpeaking === false) {
 				var msg = new SpeechSynthesisUtterance(speechQueue[0]);
-				window.speechSynthesis.speak(msg);
+				console.log(msg); // Chrome bug workaround
+				speechSynthesis.cancel(); // Chrome bug workaround
+				console.log(msg); // Chrome bug workaround
+				speechSynthesis.speak(msg);
 				$.debug("Issued speech command", 'SPEECH');
 				msg.onstart = function(event) {
 					$.debug('Start speech', 'SPEECH');
@@ -46,6 +51,7 @@ $(document).ready(function() {
 				};
 
 				msg.onend = function(event) {
+					speechSynthesis.cancel(); // Chrome bug workaround
 					speechQueue.shift();
 					currentlySpeaking = false;
 					$('#loadingImg').fadeOut(function() {
