@@ -9,12 +9,12 @@ $(document).ready(function() {
 
 	recognition.onstart = function() {
 		recognizing = true;
-		$.debug("Recognition started");
+		$.debug("Recognition started", 'RECOGNITION');
         $('#micAnimated').show();
 	};
 
 	recognition.onerror = function(event) {
-		$.debug('Recognition error');
+		$.debug('Recognition error', 'RECOGNITION');
         $('#errorDing')[0].play();
 		$.sayMessage("Sorry, I encountered an error while listening");
 	};
@@ -22,7 +22,7 @@ $(document).ready(function() {
 	recognition.onend = function() {
 		recognizing = false;
         $('#micAnimated').hide();
-		$.debug("Recognition ended");
+		$.debug("Recognition ended", 'RECOGNITION');
         $('#speechDing')[0].play();
 		if (finalTranscript.length) {
 			// $.sayProcessing();
@@ -49,8 +49,8 @@ $(document).ready(function() {
 
         $('#transcript').html(interimTranscript);
 
-        $.debug("interim:  " + interimTranscript);
-        $.debug("final:    " + finalTranscript);
+        $.debug("interim:  " + interimTranscript, 'RECOGNITION');
+        $.debug("final:    " + finalTranscript, 'RECOGNITION');
 
         // Update the page
         if(finalTranscript.length > 0) {

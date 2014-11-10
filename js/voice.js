@@ -34,25 +34,24 @@ $(document).ready(function() {
 
 	// Runs on an interval, speaking the next message in the queue
 	$.processSpeechQueue = function() {
-		$.debug("Speech Queue: "+speechQueue);
-		if (speechQueue.length) {
-			if (!currentlySpeaking) {
+		$.debug("Speech Queue: " + speechQueue, 'SPEECH');
+		if (speechQueue.length > 0) {
+			if (currentlySpeaking === false) {
 				var msg = new SpeechSynthesisUtterance(speechQueue[0]);
 				window.speechSynthesis.speak(msg);
-				currentlySpeaking = true;
-				$.debug("Issued speech command");
-
-				msg.onstart = function (event) {
-					speechQueue.splice(0, 1);
-					$.debug('Start speech');
+				$.debug("Issued speech command", 'SPEECH');
+				msg.onstart = function(event) {
+					$.debug('Start speech', 'SPEECH');
+					currentlySpeaking = true;
 				};
 
 				msg.onend = function(event) {
+					speechQueue.shift();
 					currentlySpeaking = false;
 					$('#loadingImg').fadeOut(function() {
 						$('#micStandard').fadeIn();
 					});
-					$.debug("Speech ended");
+					$.debug("Speech ended", 'SPEECH');
 				};
 			}
 		}
@@ -60,7 +59,7 @@ $(document).ready(function() {
 
 	// Push a new message onto the speech queue
 	$.sayMessage = function(message) {
-		$.debug("Queued message: "+message);
+		$.debug("Queued message: "+message, 'SPEECH');
 		speechQueue.push(message);
 	};
 
@@ -93,5 +92,5 @@ $(document).ready(function() {
 
 	$.greetUser();
 	// $('#speechDing')[0].play();
-	$('#speechDing').trigger("play");
+	// $('#speechDing').trigger("play");
 });

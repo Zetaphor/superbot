@@ -16,7 +16,8 @@ $(document).ready(function() {
 		}
 	});
 
-	$.debug = function(message) {
-		if ($.voiceDebug) console.log(message);
+	$.debug = function(message, type) {
+		type = type || 'DEBUG';
+		if ($.voiceDebug) console.log('[' + type + '] ' + message);
 	};
 });
