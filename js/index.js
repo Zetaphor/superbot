@@ -1,5 +1,8 @@
 $(document).ready(function() {
-	$.voiceDebug = true;
+	var debug = true;
+	var speechDebug = true;
+	var recognitionDebug = true;
+	var witDebug = true;
 
 	$('#submitMessage').click(function() {
 		$.apiRequest($('#messageText').val());
@@ -18,6 +21,22 @@ $(document).ready(function() {
 
 	$.debug = function(message, type) {
 		type = type || 'DEBUG';
-		if ($.voiceDebug) console.log('[' + type + '] ' + message);
+		var outputDebug = false;
+		switch(type) {
+			case "SPEECH":
+				if (speechDebug) outputDebug = true;
+				break;
+			case "WIT-API":
+				if (witDebug) outputDebug = true;
+				break;
+			case "RECOGNITION":
+				if (recognitionDebug) outputDebug = true;
+				break;
+			default:
+				if (debug) outputDebug = true;
+				break;
+		}
+
+		if (outputDebug) console.log('[' + type + '] ' + message);
 	};
 });

@@ -36,7 +36,7 @@ $(document).ready(function() {
 
 	// Runs on an interval, speaking the next message in the queue
 	$.processSpeechQueue = function() {
-		$.debug("Speech Queue: " + speechQueue, 'SPEECH');
+		// $.debug("Speech Queue: " + speechQueue, 'SPEECH');
 		if (speechQueue.length > 0) {
 			if (currentlySpeaking === false) {
 				var msg = new SpeechSynthesisUtterance(speechQueue[0]);
@@ -46,7 +46,7 @@ $(document).ready(function() {
 				speechSynthesis.speak(msg);
 				$.debug("Issued speech command", 'SPEECH');
 				msg.onstart = function(event) {
-					$.debug('Start speech', 'SPEECH');
+					$.debug('Start', 'SPEECH');
 					currentlySpeaking = true;
 				};
 
@@ -57,7 +57,7 @@ $(document).ready(function() {
 					$('#loadingImg').fadeOut(function() {
 						$('#micStandard').fadeIn();
 					});
-					$.debug("Speech ended", 'SPEECH');
+					$.debug("End", 'SPEECH');
 				};
 			}
 		}
