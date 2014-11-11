@@ -34,8 +34,13 @@
 	display: none;
 }
 
+#textInput {
+	margin-top: 10px;
+	width: 100%;
+}
+
 #messageText {
-	width: 500px;
+	width: 90%;
 	height: 30px;
 	margin-bottom: 10px;
 }
