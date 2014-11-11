@@ -34,3 +34,23 @@
 	height: 30px;
 	margin-bottom: 10px;
 }
+
+#debugLabel {
+	width: 65%;
+	margin: 0 auto;
+	padding-bottom: 10px;
+}
+
+#debugControls {
+	position: fixed;
+	top: 10;
+	border: 1px solid black;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 200px;
+	display: none;
+}
+
+#debugControls > label {
+	margin-right: 10px;
+}

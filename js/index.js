@@ -1,8 +1,11 @@
 $(document).ready(function() {
-	var debug = true;
-	var speechDebug = true;
-	var recognitionDebug = true;
-	var witDebug = true;
+	var debugStates = {
+		debugControls: true,
+		debug: true,
+		speechDebug: true,
+		recognitionDebug: true,
+		witDebug: true,
+	};
 
 	$('#submitMessage').click(function() {
 		$.apiRequest($('#messageText').val());
@@ -24,19 +27,26 @@ $(document).ready(function() {
 		var outputDebug = false;
 		switch(type) {
 			case "SPEECH":
-				if (speechDebug) outputDebug = true;
+				if (debugStates['speechDebug']) outputDebug = true;
 				break;
 			case "WIT-API":
-				if (witDebug) outputDebug = true;
+				if (debugStates['witDebug']) outputDebug = true;
 				break;
 			case "RECOGNITION":
-				if (recognitionDebug) outputDebug = true;
+				if (debugStates['recognitionDebug']) outputDebug = true;
 				break;
 			default:
-				if (debug) outputDebug = true;
+				if (debugStates['debug']) outputDebug = true;
 				break;
 		}
 
 		if (outputDebug) console.log('[' + type + '] ' + message);
 	};
+
+	$('.debugSwitch').change(function() {
+		var checked = $(this).prop('checked');
+		debugStates[$(this).attr('name')] = checked;
+	});
+
+	if (debugStates['debugControls']) $('#debugControls').fadeIn('slow');
 });

@@ -2,6 +2,7 @@
     <head>
         <title>SuperBot</title>
         <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/switches.css">
         <script src="lib/jquery-1.11.1.min.js"></script>
         <script src="js/index.js"></script>
         <script src="js/voice.js"></script>
@@ -28,5 +29,27 @@
             <input type="button" id="submitMessage" value="Send">
         </div>
         <div id="transcript">&nbsp;</div>
+        <div id="debugControls">
+            <div id="debugLabel">Console Debugging</div>
+                <div>
+                    <input type="checkbox" id="switchDebug" name="debug" class="switch debugSwitch" checked/>
+                    <label for="switchDebug">Standard</label>
+                </div>
+                <br />
+                <div>
+                    <input type="checkbox" id="switchSpeech" name="speechDebug" class="switch debugSwitch" checked/>
+                    <label for="switchSpeech">Text-To-Speech</label>
+                </div>
+                <br />
+                <div>
+                    <input type="checkbox" id="switchRecognition" name="recognitionDebug" class="switch debugSwitch" checked/>
+                    <label for="switchRecognition">Speech Recognition</label>
+                </div>
+                <br />
+                <div>
+                    <input type="checkbox" id="switchWit" name="witDebug" class="switch debugSwitch" checked/>
+                    <label for="switchWit">Wit API</label>
+                </div>
+        </div>
     </body>
 </html>
