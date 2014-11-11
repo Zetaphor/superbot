@@ -17,7 +17,8 @@ $(document).ready(function() {
 				$.debug("Message: "+ message, 'WIT-API');
 				$.debug("Command: "+ command, 'WIT-API');
 				$.debug("Confidence: "+ confidence, 'WIT-API');
-				// $.debug(entities);
+				$.debug("---- Entities ----", 'WIT-API');
+				console.log(entities);
 				// $.debug(JSON.stringify(entities));
 
 				if (confidence < 0.5) {
@@ -26,8 +27,10 @@ $(document).ready(function() {
 				} else {
 					$.post( "modules/" + command + ".php", { data: JSON.stringify(entities) })
 						.done(function( data ) {
-							$.debug("Data returned: " + data, 'WIT-API');
-							$.sayMessage(data);
+							if ($.debugStates['showResponse']) $('#response').html(data);
+							$.debug("Data returned: " + data, 'MODULE');
+							if (data.length) $.sayMessage(data);
+							else $.sayMessage('Sorry, I encountered an error while looking that up');
 						});
 				}
 			}
