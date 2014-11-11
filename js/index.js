@@ -5,6 +5,8 @@ $(document).ready(function() {
 		speechDebug: true,
 		recognitionDebug: true,
 		witDebug: true,
+		showTranscript: false,
+		showTextInput: false
 	};
 
 	$('#submitMessage').click(function() {
@@ -43,10 +45,20 @@ $(document).ready(function() {
 		if (outputDebug) console.log('[' + type + '] ' + message);
 	};
 
+	function updateDebug() {
+		if (debugStates['showTranscript']) $('#transcript').fadeIn();
+		else $('#transcript').fadeOut();
+
+		if (debugStates['showTextInput']) $('#textInput').fadeIn();
+		else $('#textInput').fadeOut();
+	}
+
 	$('.debugSwitch').change(function() {
 		var checked = $(this).prop('checked');
 		debugStates[$(this).attr('name')] = checked;
+		updateDebug();
 	});
 
 	if (debugStates['debugControls']) $('#debugControls').fadeIn('slow');
+	updateDebug();
 });

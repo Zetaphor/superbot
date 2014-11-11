@@ -21,11 +21,16 @@
 }
 
 #transcript {
+	display: none;
 	border: 1px black solid;
 	height: 30px;
 }
 
 .audioTrack {
+	display: none;
+}
+
+#textInput, #transcript {
 	display: none;
 }
 
