@@ -69,6 +69,10 @@ $(document).ready(function() {
 		speechQueue.push(message);
 	};
 
+	$.lowConfidence = function() {
+		$.sayMessage("I'm not sure I understood you correctly, could you please rephrase the question?");
+	};
+
 	// Choose a random processing message
 	$.sayProcessing = function() {
 		$.sayMessage(procMessages[procMsgIndex]);

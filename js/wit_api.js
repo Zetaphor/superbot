@@ -17,13 +17,20 @@ $(document).ready(function() {
 				$.debug("Message: "+ message, 'WIT-API');
 				$.debug("Command: "+ command, 'WIT-API');
 				$.debug("Confidence: "+ confidence, 'WIT-API');
+
+				if (confidence < 0.5) {
+					$.debug("Low confidence: " + confidence, 'WIT-API');
+					$.lowConfidence();
+				} else {
+					$.post( "modules/" + command + ".php", { data: JSON.stringify(entities) })
+						.done(function( data ) {
+							$.debug("Data returned: " + data, 'WIT-API');
+							$.sayMessage(data);
+						});
+				}
+
 				// $.debug(entities);
 				// $.debug(JSON.stringify(entities));
-				$.post( "modules/" + command + ".php", { data: JSON.stringify(entities) })
-					.done(function( data ) {
-						$.debug("Data returned: " + data, 'WIT-API');
-						$.sayMessage(data);
-					});
 			}
 		});
 	};
