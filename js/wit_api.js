@@ -17,6 +17,8 @@ $(document).ready(function() {
 				$.debug("Message: "+ message, 'WIT-API');
 				$.debug("Command: "+ command, 'WIT-API');
 				$.debug("Confidence: "+ confidence, 'WIT-API');
+				// $.debug(entities);
+				// $.debug(JSON.stringify(entities));
 
 				if (confidence < 0.5) {
 					$.debug("Low confidence: " + confidence, 'WIT-API');
@@ -28,9 +30,6 @@ $(document).ready(function() {
 							$.sayMessage(data);
 						});
 				}
-
-				// $.debug(entities);
-				// $.debug(JSON.stringify(entities));
 			}
 		});
 	};
