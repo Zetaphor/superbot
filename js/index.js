@@ -1,12 +1,13 @@
 $(document).ready(function() {
-	var debugStates = {
+	$.debugStates = {
 		debugControls: true,
 		debug: true,
 		speechDebug: true,
 		recognitionDebug: true,
 		witDebug: true,
 		showTranscript: false,
-		showTextInput: false
+		showTextInput: false,
+		showResponse: false,
 	};
 
 	$('#submitMessage').click(function() {
@@ -29,16 +30,19 @@ $(document).ready(function() {
 		var outputDebug = false;
 		switch(type) {
 			case "SPEECH":
-				if (debugStates['speechDebug']) outputDebug = true;
+				if ($.debugStates['speechDebug']) outputDebug = true;
 				break;
 			case "WIT-API":
-				if (debugStates['witDebug']) outputDebug = true;
+				if ($.debugStates['witDebug']) outputDebug = true;
+				break;
+			case "MODULE":
+				if ($.debugStates['witDebug']) outputDebug = true;
 				break;
 			case "RECOGNITION":
-				if (debugStates['recognitionDebug']) outputDebug = true;
+				if ($.debugStates['recognitionDebug']) outputDebug = true;
 				break;
 			default:
-				if (debugStates['debug']) outputDebug = true;
+				if ($.debugStates['debug']) outputDebug = true;
 				break;
 		}
 
@@ -46,19 +50,22 @@ $(document).ready(function() {
 	};
 
 	function updateDebug() {
-		if (debugStates['showTranscript']) $('#transcript').fadeIn();
+		if ($.debugStates['showTranscript']) $('#transcript').fadeIn();
 		else $('#transcript').fadeOut();
 
-		if (debugStates['showTextInput']) $('#textInput').fadeIn();
+		if ($.debugStates['showTextInput']) $('#textInput').fadeIn();
 		else $('#textInput').fadeOut();
+
+		if ($.debugStates['showResponse']) $('#response').fadeIn();
+		else $('#response').fadeOut();
 	}
 
 	$('.debugSwitch').change(function() {
 		var checked = $(this).prop('checked');
-		debugStates[$(this).attr('name')] = checked;
+		$.debugStates[$(this).attr('name')] = checked;
 		updateDebug();
 	});
 
-	if (debugStates['debugControls']) $('#debugControls').fadeIn('slow');
+	if ($.debugStates['debugControls']) $('#debugControls').fadeIn('slow');
 	updateDebug();
 });
