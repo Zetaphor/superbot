@@ -1,9 +1,6 @@
 <?php
 
-$birthdays = array(
-	'your' => '04/19',
-	'jessicas' => '3/08'
-);
+require 'config.php';
 
 $entities = json_decode($_REQUEST['data'], true);
 
