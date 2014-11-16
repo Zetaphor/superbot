@@ -8,15 +8,33 @@
 		return $yql_result->query->results->channel;
 	}
 
+	function getStringBetween($string, $start, $end){
+	    $string = " ".$string;
+	    $ini = strpos($string,$start);
+	    if ($ini == 0) return "";
+	    $ini += strlen($start);
+	    $len = strpos($string,$end,$ini) - $ini;
+	    return substr($string,$ini,$len);
+	}
+
 	function getTemp($location) {
-		$query = 'select item.condition.temp, item.condition.text, location.city, location.region, item.description from weather.forecast where woeid in (select woeid from geo.places(1) where text="'.$location.'")';
+		$query = 'select item.condition.temp, item.condition.text, location.city, location.region from weather.forecast where woeid in (select woeid from geo.places(1) where text="'.$location.'")';
 		$result = yqlRequest($query);
-		d($result->item->description);
 		return array(
 			'city' => $result->location->city,
 			'state' => $result->location->region,
 			'temp' => $result->item->condition->temp,
 			'condition' => $result->item->condition->text
+		);
+	}
+
+	function getForecast($location) {
+		$query = 'select item.condition.temp, item.condition.text, location.city, location.region, item.description from weather.forecast where woeid in (select woeid from geo.places(1) where text="'.$location.'")';
+		$result = yqlRequest($query);
+		return array(
+			'condition' => $result->item->condition->text,
+			'forecast' => getStringBetween($result->item->description, 'Conditions:</b>', '<a href="'),
+			'condition_image' => getStringBetween($result->item->description, 'src="', '.gif') . '.gif'
 		);
 	}
 
@@ -32,6 +50,5 @@
 		return $result->wind->speed;
 	}
 
-	getTemp('49548');
-
+	getForecast('49548');
 ?>
