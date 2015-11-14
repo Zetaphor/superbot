@@ -1,5 +1,5 @@
 <?php
-	require '../kint/Kint.class.php';
+//	require 'kint/Kint.class.php';
 
 	function yqlRequest($query) {
 		$query = rawurlencode($query);

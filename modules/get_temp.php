@@ -1,9 +1,11 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 require 'kint/Kint.class.php';
 require 'lib/yql_weather.php';
 require 'config.php';
-
-$entities = json_decode($_REQUEST['data'], true);
+$entities = [];
+if (isset($_REQUEST['entities'])) $entities = json_decode($_REQUEST['data'], true);
 
 function getLocalTemp() {
 	global $default_location;
@@ -21,5 +23,3 @@ if (count($entities)) {
 	if ($entities['location'][0]['value'] == "outside") echo getLocalTemp();
 	else echo getLocationTemp($entities['location'][0]['value']);
 } else echo getLocalTemp();
-
-?>

@@ -34,5 +34,3 @@ function getCast($movie_name) {
 	if ($movie) return $movie['cast'];
 	else return false;
 }
-
-?>

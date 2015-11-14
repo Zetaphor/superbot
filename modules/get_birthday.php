@@ -17,5 +17,3 @@ if(isset($birthdays[$name])) {
 	echo ucfirst($name . " birthday is on " . $birthday);
 }
 else echo "Sorry, I don't know ". ucfirst($name) ." birthdate";
-
-?>

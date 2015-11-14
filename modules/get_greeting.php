@@ -12,4 +12,3 @@ $greetings = array(
 
 $greetingIndex = floor(rand(0, count($greetings)) / 2) + floor(rand(0, count($greetings)) / 2);
 echo $greetings[$greetingIndex];
-?>

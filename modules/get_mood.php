@@ -13,4 +13,3 @@ $moods = array(
 
 $moodIndex = floor(rand(0, count($moods)) / 2) + floor(rand(0, count($moods)) / 2);
 echo $moods[$moodIndex];
-?>

@@ -6,5 +6,3 @@ $birthdays = array(
 	'your' => '04/19',
 	'jessicas' => '3/08'
 );
-
-?>

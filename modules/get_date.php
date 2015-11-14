@@ -11,5 +11,3 @@ if (count($entities)) {
 } else {
 	echo "Today's date is " . date("l, F jS", getDate()[0]);
 }
-
-?>
