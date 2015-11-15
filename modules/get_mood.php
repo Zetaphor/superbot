@@ -1,4 +1,10 @@
 <?php
+$response = [
+    'success' => true,
+    'message' => '',
+    'html' => ''
+];
+
 $moods = array(
 		"I'm doing well, thanks for asking!",
 		"I'm great!",
@@ -12,4 +18,5 @@ $moods = array(
 	);
 
 $moodIndex = floor(rand(0, count($moods)) / 2) + floor(rand(0, count($moods)) / 2);
-echo $moods[$moodIndex];
+$response['message'] = $moods[$moodIndex];
+echo json_encode($response);

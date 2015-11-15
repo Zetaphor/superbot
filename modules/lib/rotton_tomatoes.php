@@ -6,6 +6,7 @@ function rottonRequest($movie_name) {
 	$results = json_decode(file_get_contents('http://api.rottentomatoes.com/api/public/v1.0/movies.json?q='. urlencode($movie_name) .'&page_limit=1&page=1&apikey='. $api_key));
 	if (count($results->movies)) {
 		$movie_result = $results->movies[0];
+//        d($movie_result);
 		$movie = array(
 			'poster' => str_replace("_tmb", "_det", $movie_result->posters->profile),
 			'release_year' => $movie_result->year,
@@ -55,3 +56,6 @@ function getPoster($movie_name) {
     if ($movie) return $movie['poster'];
     else return false;
 }
+
+// http://resizing.flixster.com/SifkVsJGcIrYYjldsLrny-u74Pw=/54x81/dkpu1ddg7pbsk.cloudfront.net/movie/11/17/64/11176450_ori.jpg
+// https://resizing.flixster.com/5CbtiBSzqVjH_ckRVfzJvs-Ocns=/180x270/dkpu1ddg7pbsk.cloudfront.net/movie/11/17/64/11176450_ori.jpg

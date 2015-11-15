@@ -14,8 +14,16 @@ function getLocationTemp($location) {
 	return "The temperature in ". $weather['city'] .", ". $weather['state'] ." is ". $weather['temp']. " degrees. The condition is ". $weather['condition'];
 }
 
+$response = [
+    'success' => true,
+    'message' => '',
+    'html' => ''
+];
+
 if (count($entities)) {
 	// Wit.ai has a problem with realizing that 'outside' is not a location
-	if ($entities['location'][0]['value'] == "outside") echo getLocalTemp();
-	else echo getLocationTemp($entities['location'][0]['value']);
-} else echo getLocalTemp();
+	if ($entities['location'][0]['value'] == "outside") $response['message'] = getLocalTemp();
+	else $response['message'] = getLocationTemp($entities['location'][0]['value']);
+} else $response['message'] = getLocalTemp();
+
+echo json_encode($response);

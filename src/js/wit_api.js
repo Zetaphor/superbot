@@ -28,12 +28,24 @@ $(document).ready(function() {
                         $.debug("Low confidence: " + confidence, 'WIT-API');
                         $.lowConfidence();
                     } else {
-                        $.post( "/modules/" + command + ".php", { data: JSON.stringify(entities) })
+                        $.post( "/commands.php", { command: command, data: JSON.stringify(entities) })
                             .done(function( data ) {
-                                if ($.debugStates.showResponse) $('#response').html(data);
-                                $.debug("Data returned: " + data, 'MODULE');
-                                if (data.length) $.sayMessage(data);
-                                else $.sayMessage('Sorry, I encountered an error while looking that up');
+                                var success = true;
+                                var message = '';
+                                var html = '';
+                                if (data.length) {
+                                    var reply = JSON.parse(data);
+                                    if (reply.success) {
+                                        message = reply.message;
+                                        html = reply.html;
+                                    } else success = false;
+                                } else success = false;
+
+                                if (success) {
+                                    if (message.length) $.sayMessage(message);
+                                    if (html.length) $('.htmlOutput').html(html);
+                                    if ($.debugStates.showResponse) $('#response').html(message);
+                                } else $.sayMessage('Sorry, I encountered an error while looking that up');
                             })
                             .error(function() {
                                 $.sayMessage("Sorry, I'm having trouble with that part of my programming");

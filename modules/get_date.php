@@ -1,5 +1,11 @@
 <?php
 
+$response = [
+    'success' => true,
+    'message' => '',
+    'html' => ''
+];
+
 $entities = json_decode($_REQUEST['data'], true);
 if (count($entities)) {
 	if (isset($entities['datetime']['value'])) {
@@ -7,7 +13,9 @@ if (count($entities)) {
 	} else if (isset($entities['datetime'][0]['value'])) {
 		$datetime = strtotime($entities['datetime'][0]['value']);
 	}
-	echo "That day is ". date("l, F jS", $datetime);
+	$response['message'] = "That day is ". date("l, F jS", $datetime);
 } else {
-	echo "Today's date is " . date("l, F jS", getDate()[0]);
+	$response['message'] = "Today's date is " . date("l, F jS", getDate()[0]);
 }
+
+echo json_encode($response);

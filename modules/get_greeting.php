@@ -1,4 +1,11 @@
 <?php
+
+$response = [
+    'success' => true,
+    'message' => '',
+    'html' => ''
+];
+
 $greetings = array(
 		'Hello again!',
 		'Nice to see you again!',
@@ -11,4 +18,5 @@ $greetings = array(
 	);
 
 $greetingIndex = floor(rand(0, count($greetings)) / 2) + floor(rand(0, count($greetings)) / 2);
-echo $greetings[$greetingIndex];
+$response['message'] = $greetings[$greetingIndex];
+echo json_encode($response);

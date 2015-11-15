@@ -24,7 +24,7 @@
 	display: none;
 	border: 1px black solid;
 	height: 30px;
-  margin-bottom: 1em;
+  margin-bottom: 1e;
 }
 
 .audioTrack {
@@ -59,7 +59,7 @@
 }
 
 .panel {
-	position: fixed;
+	position: absolute;
 	top: 10px;
 	border: 1px solid black;
 	padding-left: 10px;
@@ -77,4 +77,15 @@
 
 .debugControls {
   display: none;
+}
+
+.htmlOutput {
+  border: 1px solid black;
+  height: 100px;
+  width: 100px;
+
+  .poster-image {
+    width: 180px;
+    height: auto;
+  }
 }
