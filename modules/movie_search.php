@@ -16,7 +16,7 @@ if (isset($entities['movie_release_date'])) {
 } elseif (isset($entities['movie_actors'])) {
 	$actors = getCast($movie_title);
 	if ($actors) {
-		$actors[(count($actors) -1)] = ' and '. $actors[(count($actors) - 1)];
+		$actors[(count($actors) -1)] = 'and '. $actors[(count($actors) - 1)];
 		echo ucwords($movie_title) ." starred ". implode(', ', $actors);
 	} else echo 'Sorry, I was unable to find a movie called '. ucwords($movie_title);
 }
