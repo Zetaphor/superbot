@@ -34,3 +34,24 @@ function getCast($movie_name) {
 	if ($movie) return $movie['cast'];
 	else return false;
 }
+
+function getSynopsis($movie_name) {
+    $movie = rottonRequest($movie_name);
+    if ($movie) return $movie['synopsis'];
+    else return false;
+}
+
+function getRating($movie_name) {
+    $movie = rottonRequest($movie_name);
+    if ($movie) return array(
+        'audience_rating' => $movie['audience_rating'],
+        'critic_score' => $movie['critic_score']
+    );
+    else return false;
+}
+
+function getPoster($movie_name) {
+    $movie = rottonRequest($movie_name);
+    if ($movie) return $movie['poster'];
+    else return false;
+}
