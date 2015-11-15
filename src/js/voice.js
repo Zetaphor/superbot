@@ -103,18 +103,6 @@ $(document).ready(function() {
 
 	$.greetUser();
 
-
-    //window.speechSynthesis.onvoiceschanged = function() {
-    //    var selector = '<select class="voice-select">';
-    //    var voices = window.speechSynthesis.getVoices();
-    //    voice = voices.filter(function (voice) {
-    //        return voice.name == 'US English';
-    //    })[0];
-    //    for(var i = 0; i < voices.length; i++ ) {
-    //        console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].lang);
-    //    }
-    //};
-
 	// $('.speechDing')[0].play();
 	// $('.speechDing').trigger("play");
 });
