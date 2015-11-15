@@ -1,9 +1,5 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
-require 'kint/Kint.class.php';
 require 'lib/yql_weather.php';
-require 'config.php';
 $entities = [];
 if (isset($_REQUEST['entities'])) $entities = json_decode($_REQUEST['data'], true);
 
