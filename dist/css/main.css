@@ -73,7 +73,7 @@
     height: auto; }
 
 input.switch:empty {
-  margin-left: -999px; }
+  display: none; }
 
 input.switch:empty ~ label {
   position: relative;
