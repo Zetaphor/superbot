@@ -7,7 +7,7 @@ $(document).ready(function() {
 		witDebug: true,
 		showTranscript: false,
 		showTextInput: false,
-		showResponse: false,
+		showResponse: false
 	};
 
 	$('.submitMessage').click(function() {
