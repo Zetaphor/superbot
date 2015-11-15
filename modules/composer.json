@@ -1,0 +1,12 @@
+{
+    "name": "zetaphor/modules",
+    "require": {
+        "google/apiclient": "^1.1"
+    },
+    "authors": [
+        {
+            "name": "Gary Daigle",
+            "email": "zetaphor@gmail.com"
+        }
+    ]
+}
