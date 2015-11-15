@@ -19,7 +19,8 @@
 .transcript {
   display: none;
   border: 1px black solid;
-  height: 30px; }
+  height: 30px;
+  margin-bottom: 1em; }
 
 .audioTrack {
   display: none; }

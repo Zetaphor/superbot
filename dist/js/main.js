@@ -296,7 +296,7 @@ $(document).ready(function() {
                         $.debug("Low confidence: " + confidence, 'WIT-API');
                         $.lowConfidence();
                     } else {
-                        $.post( "modules/" + command + ".php", { data: JSON.stringify(entities) })
+                        $.post( "/modules/" + command + ".php", { data: JSON.stringify(entities) })
                             .done(function( data ) {
                                 if ($.debugStates.showResponse) $('#response').html(data);
                                 $.debug("Data returned: " + data, 'MODULE');
