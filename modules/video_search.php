@@ -13,9 +13,10 @@ $response = [
 if (isset($_REQUEST['data'])) $entities = json_decode($_REQUEST['data'], true);
 else $response['success'] = false;
 
-if (isset($entities['trailer_name'][0]['value'])) {
-    $video_id = getVideoId($entities['trailer_name'][0]['value'] . ' official trailer');
-    $response['message'] = "Here's the is the trailer for ";
+
+if (isset($entities['video_subject'][0]['value'])) {
+    $video_id = getVideoId($entities['video_subject'][0]['value']);
+    $response['message'] = "Here's the video you requested";
     $response['html'] = '<iframe width="560" height="315" src="https://www.youtube.com/embed/' . $video_id. '" frameborder="0" allowfullscreen></iframe>';
 }
 
