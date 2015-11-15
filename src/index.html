@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>SuperBot</title>
+        <link rel="stylesheet" href="css/main.min.css">
+    </head>
+    <body>
+<!--         <audio class=errorDing" preload="auto">
+          <source src="audio/ding_1.mp3" type="audio/mpeg" />
+          Your browser does not support HTML5 Web Audio Playback!
+        </audio>
+        <audio class=speechDing" preload="auto">
+          <source src="audio/ding_2.mp3" />
+        </audio> -->
+        <video class="audioTrack speechDing" src="audio/ding_2.mp3"></video>
+        <video class="audioTrack errorDing" src="audio/ding_1.mp3"></video>
+        <div class="interfaceWrapper">
+            <img class="interfaceImg loadingImg" src="img/loading.gif">
+            <img class="interfaceImg micImg micStandard" src="img/mic_standard.png">
+            <img class="interfaceImg micImg micAnimated" src="img/mic_animated.gif">
+        </div>
+        <div class="transcript">&nbsp;</div>
+        <div class="response">&nbsp;</div>
+        <div class="textInput">
+            <input class="messageText" type="text">
+            <input type="button" class="submitMessage" value="Send">
+        </div>
+        <div class="debugControls">
+            <div class="debugLabel">Debug Tools</div>
+                <div>
+                    <input type="checkbox" id="switchDebug" name="debug" class="switch debugSwitch" checked/>
+                    <label for="switchDebug">Standard</label>
+                </div>
+                <br />
+                <div>
+                    <input type="checkbox" id="switchSpeech" name="speechDebug" class="switch debugSwitch" checked/>
+                    <label for="switchSpeech">Text-To-Speech</label>
+                </div>
+                <br />
+                <div>
+                    <input type="checkbox" id="switchRecognition" name="recognitionDebug" class="switch debugSwitch" checked/>
+                    <label for="switchRecognition">Speech Recognition</label>
+                </div>
+                <br />
+                <div>
+                    <input type="checkbox" id="switchWit" name="witDebug" class="switch debugSwitch" checked/>
+                    <label for="switchWit">Wit API</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="switchTranscript" name="showTranscript" class="switch debugSwitch"/>
+                    <label for="switchTranscript">Show Transcript</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="switchManualInput" name="showTextInput" class="switch debugSwitch"/>
+                    <label for="switchManualInput">Show Text Input</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="switchResponse" name="showResponse" class="switch debugSwitch"/>
+                    <label for="switchResponse">Show Response</label>
+                </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="js/main.min.js"></script>
+
+    </body>
+</html>

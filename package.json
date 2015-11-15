@@ -1,0 +1,36 @@
+{
+  "name": "superbot",
+  "version": "1.0.0",
+  "description": "superbot ========",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zetaphor/superbot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zetaphor/superbot/issues"
+  },
+  "homepage": "https://github.com/Zetaphor/superbot",
+  "devDependencies": {
+    "browser-sync": "2.6.5",
+    "fluent-ffmpeg": "^2.0.1",
+    "gulp": "3.8.11",
+    "gulp-autoprefixer": "2.1.0",
+    "gulp-cache": "0.2.8",
+    "gulp-concat": "2.5.2",
+    "gulp-file-include": "^0.13.7",
+    "gulp-fluent-ffmpeg": "^1.0.2",
+    "gulp-imagemin": "2.2.1",
+    "gulp-jshint": "1.10.0",
+    "gulp-minify-css": "1.0.0",
+    "gulp-plumber": "1.0.0",
+    "gulp-rename": "1.2.2",
+    "gulp-sass": "1.3.3",
+    "gulp-uglify": "1.2.0"
+  }
+}

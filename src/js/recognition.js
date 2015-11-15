@@ -10,27 +10,27 @@ $(document).ready(function() {
 	recognition.onstart = function() {
 		recognizing = true;
 		$.debug("Recognition started", 'RECOGNITION');
-        $('#micAnimated').show();
+        $('.micAnimated').show();
 	};
 
 	recognition.onerror = function(event) {
 		$.debug('Recognition error', 'RECOGNITION');
-        $('#errorDing')[0].play();
+        $('.errorDing')[0].play();
 		$.sayMessage("Sorry, I encountered an error while listening");
 	};
 
 	recognition.onend = function() {
 		recognizing = false;
-        $('#micAnimated').hide();
+        $('.micAnimated').hide();
 		$.debug("Recognition ended", 'RECOGNITION');
-        $('#speechDing')[0].play();
+        $('.speechDing')[0].play();
 		if (finalTranscript.length) {
 			// $.sayProcessing();
 			$.apiRequest(finalTranscript);
-            $('#loadingImg').show();
+            $('.loadingImg').show();
             $('.micImg').fadeOut();
 		} else {
-            $('#errorDing')[0].play();
+            $('.errorDing')[0].play();
 			$.sayMessage("Sorry, I didn't catch that. Could you please try again?");
 		}
 	};
@@ -47,14 +47,14 @@ $(document).ready(function() {
             }
         }
 
-        $('#transcript').html(interimTranscript);
+        $('.transcript').html(interimTranscript);
 
         $.debug("interim:  " + interimTranscript, 'RECOGNITION');
         $.debug("final:    " + finalTranscript, 'RECOGNITION');
 
         // Update the page
         if(finalTranscript.length > 0) {
-            $('#transcript').html(finalTranscript);
+            $('.transcript').html(finalTranscript);
             recognition.stop();
             recognizing = false;
         }
@@ -70,7 +70,7 @@ $(document).ready(function() {
             finalTranscript = '';
             // Request access to the User's microphone and Start recognizing voice input
             recognition.start();
-            $('#transcript').html('');
+            $('.transcript').html('');
         }
     });
 

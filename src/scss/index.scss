@@ -1,4 +1,4 @@
-#interfaceWrapper {
+.interfaceWrapper {
 	position: relative;
 	width: 376px;
 	height: 375px;
@@ -11,16 +11,16 @@
 	left: 0;
 }
 
-#micAnimated {
+.micAnimated {
 	display: none;
 }
 
-#loadingImg {
+.loadingImg {
 	top: 77.5px;
 	left: 77.5px;
 }
 
-#transcript {
+.transcript {
 	display: none;
 	border: 1px black solid;
 	height: 30px;
@@ -30,34 +30,34 @@
 	display: none;
 }
 
-#textInput, #transcript {
+.textInput, .transcript {
 	display: none;
 }
 
-#textInput {
+.textInput {
 	margin-top: 10px;
 	width: 100%;
 }
 
-#messageText {
+.messageText {
 	width: 90%;
 	height: 30px;
 	margin-bottom: 10px;
 }
 
-#response {
+.response {
 	width: 100%;
 	height: 30px;
 	border: 1px solid black;
 }
 
-#debugLabel {
+.debugLabel {
 	width: 50%;
 	margin: 0 auto;
 	padding-bottom: 10px;
 }
 
-#debugControls {
+.debugControls {
 	position: fixed;
 	top: 10;
 	border: 1px solid black;
@@ -67,6 +67,6 @@
 	display: none;
 }
 
-#debugControls > label {
+.debugControls > label {
 	margin-right: 10px;
 }

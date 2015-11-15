@@ -1,37 +1,31 @@
 <html>
     <head>
         <title>SuperBot</title>
-        <link rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" href="css/switches.css">
-        <script src="js/lib/jquery-1.11.1.min.js"></script>
-        <script src="js/index.js"></script>
-        <script src="js/voice.js"></script>
-        <script src="js/recognition.js"></script>
-        <script src="js/wit_api.js"></script>
+        <link rel="stylesheet" href="css/main.min.css">
     </head>
     <body>
-<!--         <audio id="errorDing" preload="auto">
+<!--         <audio class=errorDing" preload="auto">
           <source src="audio/ding_1.mp3" type="audio/mpeg" />
           Your browser does not support HTML5 Web Audio Playback!
         </audio>
-        <audio id="speechDing" preload="auto">
+        <audio class=speechDing" preload="auto">
           <source src="audio/ding_2.mp3" />
         </audio> -->
-        <video class="audioTrack" src="audio/ding_2.mp3" id="speechDing"></video>
-        <video class="audioTrack" src="audio/ding_1.mp3" id="errorDing"></video>
-        <div id="interfaceWrapper">
-            <img class="interfaceImg" id="loadingImg" src="img/loading.gif">
-            <img class="interfaceImg micImg" id="micStandard" src="img/mic_standard.png">
-            <img class="interfaceImg micImg" id="micAnimated" src="img/mic_animated.gif">
+        <video class="audioTrack speechDing" src="audio/ding_2.mp3"></video>
+        <video class="audioTrack errorDing" src="audio/ding_1.mp3"></video>
+        <div class="interfaceWrapper">
+            <img class="interfaceImg loadingImg" src="img/loading.gif">
+            <img class="interfaceImg micImg micStandard" src="img/mic_standard.png">
+            <img class="interfaceImg micImg micAnimated" src="img/mic_animated.gif">
         </div>
-        <div id="transcript">&nbsp;</div>
-        <div id="response">&nbsp;</div>
-        <div id="textInput">
-            <input id="messageText" type="text">
-            <input type="button" id="submitMessage" value="Send">
+        <div class="transcript">&nbsp;</div>
+        <div class="response">&nbsp;</div>
+        <div class="textInput">
+            <input class="messageText" type="text">
+            <input type="button" class="submitMessage" value="Send">
         </div>
-        <div id="debugControls">
-            <div id="debugLabel">Debug Tools</div>
+        <div class="debugControls">
+            <div class="debugLabel">Debug Tools</div>
                 <div>
                     <input type="checkbox" id="switchDebug" name="debug" class="switch debugSwitch" checked/>
                     <label for="switchDebug">Standard</label>
@@ -64,5 +58,9 @@
                     <label for="switchResponse">Show Response</label>
                 </div>
         </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="js/main.min.js"></script>
+
     </body>
 </html>

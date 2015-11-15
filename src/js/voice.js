@@ -40,6 +40,7 @@ $(document).ready(function() {
 		if (speechQueue.length > 0) {
 			if (currentlySpeaking === false) {
 				var msg = new SpeechSynthesisUtterance(speechQueue[0]);
+                msg.lang = 'en-GB';
 				console.log(msg); // Chrome bug workaround
 				speechSynthesis.cancel(); // Chrome bug workaround
 				console.log(msg); // Chrome bug workaround
@@ -54,8 +55,8 @@ $(document).ready(function() {
 					speechSynthesis.cancel(); // Chrome bug workaround
 					speechQueue.shift();
 					currentlySpeaking = false;
-					$('#loadingImg').fadeOut(function() {
-						$('#micStandard').fadeIn();
+					$('.loadingImg').fadeOut(function() {
+						$('.micStandard').fadeIn();
 					});
 					$.debug("End", 'SPEECH');
 				};
@@ -101,6 +102,19 @@ $(document).ready(function() {
 	$.debug('Proccessing Index: '+procMsgIndex);
 
 	$.greetUser();
-	// $('#speechDing')[0].play();
-	// $('#speechDing').trigger("play");
+
+
+    //window.speechSynthesis.onvoiceschanged = function() {
+    //    var selector = '<select class="voice-select">';
+    //    var voices = window.speechSynthesis.getVoices();
+    //    voice = voices.filter(function (voice) {
+    //        return voice.name == 'US English';
+    //    })[0];
+    //    for(var i = 0; i < voices.length; i++ ) {
+    //        console.log("Voice " + i.toString() + ' ' + voices[i].name + ' ' + voices[i].lang);
+    //    }
+    //};
+
+	// $('.speechDing')[0].play();
+	// $('.speechDing').trigger("play");
 });
