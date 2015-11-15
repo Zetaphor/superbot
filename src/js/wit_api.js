@@ -34,6 +34,9 @@ $(document).ready(function() {
                                 $.debug("Data returned: " + data, 'MODULE');
                                 if (data.length) $.sayMessage(data);
                                 else $.sayMessage('Sorry, I encountered an error while looking that up');
+                            })
+                            .error(function() {
+                                $.sayMessage("Sorry, I'm having trouble with that part of my programming");
                             });
                     }
                 }
