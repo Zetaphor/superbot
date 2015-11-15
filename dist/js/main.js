@@ -66,7 +66,7 @@ $(document).ready(function() {
 		updateDebug();
 	});
 
-	if ($.debugStates.debugControls) $('.debugControls').fadeIn('slow');
+    if ($.debugStates.debugControls) $('.debugControls').show();
 	updateDebug();
 });
 $(document).ready(function() {

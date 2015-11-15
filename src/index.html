@@ -24,8 +24,8 @@
             <input class="messageText" type="text">
             <input type="button" class="submitMessage" value="Send">
         </div>
-        <div class="debugControls">
-            <div class="debugLabel">Debug Tools</div>
+        <div class="debugControls panel">
+            <div class="debugLabel">Console Debug</div>
                 <div>
                     <input type="checkbox" id="switchDebug" name="debug" class="switch debugSwitch" checked/>
                     <label for="switchDebug">Standard</label>
@@ -45,18 +45,22 @@
                     <input type="checkbox" id="switchWit" name="witDebug" class="switch debugSwitch" checked/>
                     <label for="switchWit">Wit API</label>
                 </div>
-                <div>
-                    <input type="checkbox" id="switchTranscript" name="showTranscript" class="switch debugSwitch"/>
-                    <label for="switchTranscript">Show Transcript</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="switchManualInput" name="showTextInput" class="switch debugSwitch"/>
-                    <label for="switchManualInput">Show Text Input</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="switchResponse" name="showResponse" class="switch debugSwitch"/>
-                    <label for="switchResponse">Show Response</label>
-                </div>
+        </div>
+
+        <div class="displayControls panel">
+            <div class="debugLabel">Display</div>
+            <div>
+                <input type="checkbox" id="switchTranscript" name="showTranscript" class="switch debugSwitch"/>
+                <label for="switchTranscript">Show Transcript</label>
+            </div>
+            <div>
+                <input type="checkbox" id="switchManualInput" name="showTextInput" class="switch debugSwitch"/>
+                <label for="switchManualInput">Show Text Input</label>
+            </div>
+            <div>
+                <input type="checkbox" id="switchResponse" name="showResponse" class="switch debugSwitch"/>
+                <label for="switchResponse">Show Response</label>
+            </div>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

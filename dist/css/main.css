@@ -46,17 +46,22 @@
   margin: 0 auto;
   padding-bottom: 10px; }
 
-.debugControls {
+.panel {
   position: fixed;
-  top: 10;
+  top: 10px;
   border: 1px solid black;
   padding-left: 10px;
   padding-right: 10px;
-  width: 220px;
-  display: none; }
+  width: 220px; }
 
-.debugControls > label {
+.panel > label {
   margin-right: 10px; }
+
+.displayControls {
+  right: 10px; }
+
+.debugControls {
+  display: none; }
 
 input.switch:empty {
   margin-left: -999px; }
