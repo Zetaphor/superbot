@@ -1,8 +1,11 @@
 .image-results {
   /* Prevent vertical gaps */
-  column-count: 5;
+  column-count: 4;
   column-gap: 0px;
   line-height: 0;
+  display: block;
+  margin: 0 auto;
+  width: 75vw;
 }
 
 .image-results img {

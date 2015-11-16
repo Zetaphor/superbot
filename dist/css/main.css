@@ -1,12 +1,15 @@
 .image-results {
   /* Prevent vertical gaps */
-  -webkit-column-count: 5;
-     -moz-column-count: 5;
-          column-count: 5;
+  -webkit-column-count: 4;
+     -moz-column-count: 4;
+          column-count: 4;
   -webkit-column-gap: 0px;
      -moz-column-gap: 0px;
           column-gap: 0px;
-  line-height: 0; }
+  line-height: 0;
+  display: block;
+  margin: 0 auto;
+  width: 75vw; }
 
 .image-results img {
   /* Just in case there are inline attributes */
@@ -154,3 +157,7 @@ input.switch:checked ~ label:before {
 
 input.switch:checked ~ label:after {
   margin-left: 2.1em; }
+
+.video-result {
+  display: block;
+  margin: 0 auto; }
