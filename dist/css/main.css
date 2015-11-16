@@ -107,7 +107,6 @@
   display: none; }
 
 .htmlOutput {
-  border: 1px solid black;
   height: 500px;
   width: 100%; }
   .htmlOutput .poster-image {
