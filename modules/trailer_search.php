@@ -15,7 +15,7 @@ else $response['success'] = false;
 
 if (isset($entities['trailer_name'][0]['value'])) {
     $video_id = getVideoId($entities['trailer_name'][0]['value'] . ' official trailer');
-    $response['message'] = "Here's the is the trailer for ";
+    $response['message'] = "Here's the is the trailer for " . $entities['trailer_name'][0]['value'];
     $response['html'] = '<iframe width="560" height="315" src="https://www.youtube.com/embed/' . $video_id. '" frameborder="0" allowfullscreen></iframe>';
 }
 
