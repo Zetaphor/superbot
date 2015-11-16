@@ -1,6 +1,4 @@
 <?php
-//	require 'kint/Kint.class.php';
-
 	function yqlRequest($query) {
 		$query = rawurlencode($query);
 		$query = "https://query.yahooapis.com/v1/public/yql?q=". $query ."&format=json&callback=";
