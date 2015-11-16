@@ -1,0 +1,33 @@
+.image-results {
+  /* Prevent vertical gaps */
+  column-count: 5;
+  column-gap: 0px;
+  line-height: 0;
+}
+
+.image-results img {
+  /* Just in case there are inline attributes */
+  height: auto !important;
+  width: 100% !important;
+}
+
+@media (max-width: 1200px) {
+  .image-results {
+    column-count: 4;
+  }
+}
+@media (max-width: 1000px) {
+  .image-results {
+    column-count: 3;
+  }
+}
+@media (max-width: 800px) {
+  .image-results {
+    column-count: 2;
+  }
+}
+@media (max-width: 400px) {
+  .image-results {
+    column-count: 1;
+  }
+}
