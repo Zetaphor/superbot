@@ -1,7 +1,6 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
-require '../kint/Kint.class.php';
 require 'lib/youtube_video.php';
 
 $response = [

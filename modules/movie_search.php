@@ -1,6 +1,5 @@
 <?php
 require 'lib/rotton_tomatoes.php';
-require '../kint/Kint.class.php';
 
 $entities = json_decode($_REQUEST['data'], true);
 

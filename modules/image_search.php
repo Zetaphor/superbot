@@ -1,5 +1,4 @@
 <?php
-require '../kint/Kint.class.php';
 $entities = json_decode($_REQUEST['data'], true);
 
 $response = [

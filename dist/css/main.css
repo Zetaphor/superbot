@@ -1,3 +1,9 @@
+.forecast-results {
+  text-align: center; }
+  .forecast-results img {
+    display: block;
+    margin: 0 auto; }
+
 .image-results {
   /* Prevent vertical gaps */
   -webkit-column-count: 4;
